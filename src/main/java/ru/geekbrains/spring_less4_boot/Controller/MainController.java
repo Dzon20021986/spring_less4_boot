@@ -7,6 +7,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import ru.geekbrains.spring_less4_boot.Model.Product;
 import ru.geekbrains.spring_less4_boot.Repository.ProductRepository;
+import ru.geekbrains.spring_less4_boot.Service.ProductService;
 
 import java.util.List;
 
@@ -16,6 +17,9 @@ public class MainController {
 
     @Autowired
     private ProductRepository productRepository;
+
+    @Autowired
+    private ProductService service;
 
     @GetMapping("/product/{id}")
     public String getTest(Model model, @PathVariable Long id) {
@@ -30,8 +34,6 @@ public class MainController {
         return productRepository.getAllProducts();
     }
 
-
-    //buhhuihi565
 
 
 
@@ -77,6 +79,12 @@ public class MainController {
     @ResponseBody
     public void addProductPost(@RequestBody Product product) {
         productRepository.addProduct(product);
+    }
+    //559
+
+    @GetMapping("/product/change_cost")
+    public void changeCost(Long id, Integer cost) {
+        service.changeCost(id, cost);
     }
 
 
