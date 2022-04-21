@@ -23,7 +23,11 @@
         <tr ng-repeat="p in productList">
             <td>{{p.id}}</td>
             <td>{{p.title}}</td>
-            <td>{{p.cost}}</td>
+            <td>
+                <button class="btn btn-danger" ng-click="changeCost(p.id,-1)">-</button>
+                {{p.cost}}
+                <button class="btn btn-primary" ng-click="changeCost(p.id, 1)">+</button>
+            </td>
         </tr>
         </tbody>
     </table>

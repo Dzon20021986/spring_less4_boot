@@ -8,6 +8,19 @@ angular.module('app', []).controller('indexController', function ($scope, $http)
             });
     };
 
+    $scope.changeCost = function (productId, delta){
+        $http({
+            url: contextPath + '/product/change_cost',
+            method: 'GET',
+            params: {
+                productId : productId,
+                delta : delta
+            }
+        }).then(function (response){
+            $scope.loadProduct();
+        });
+    };
+
     $scope.loadProduct();
 
 });

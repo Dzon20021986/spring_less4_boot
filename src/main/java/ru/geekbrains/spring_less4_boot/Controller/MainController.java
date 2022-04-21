@@ -11,8 +11,8 @@ import ru.geekbrains.spring_less4_boot.Service.ProductService;
 
 import java.util.List;
 
-@Controller
-//@RestController
+//@Controller
+@RestController
 public class MainController {
 
     @Autowired
@@ -29,7 +29,7 @@ public class MainController {
     }
 
     @GetMapping("/product/all")
-    @ResponseBody
+//    @ResponseBody
     public List<Product> getTest() {
         return productRepository.getAllProducts();
     }
@@ -76,15 +76,15 @@ public class MainController {
     }
 
     @PostMapping("/product/add")
-    @ResponseBody
+//    @ResponseBody
     public void addProductPost(@RequestBody Product product) {
         productRepository.addProduct(product);
     }
     //559
 
     @GetMapping("/product/change_cost")
-    public void changeCost(Long id, Integer cost) {
-        service.changeCost(id, cost);
+    public void changeCost(@RequestParam Long productId, @RequestParam Integer delta) {
+        service.changeCost(productId, delta);
     }
 
 
