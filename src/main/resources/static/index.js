@@ -8,6 +8,7 @@ angular.module('app', []).controller('indexController', function ($scope, $http)
             });
     };
 
+
     $scope.changeCost = function (productId, delta){
         $http({
             url: contextPath + '/product/change_cost',
@@ -20,6 +21,13 @@ angular.module('app', []).controller('indexController', function ($scope, $http)
             $scope.loadProduct();
         });
     };
+
+    $scope.deleteProduct = function (productId){
+        $http.get(contextPath + '/product/delete/' + productId)
+            .then(function (response){
+            $scope.loadProduct();
+        });
+    }
 
     $scope.loadProduct();
 

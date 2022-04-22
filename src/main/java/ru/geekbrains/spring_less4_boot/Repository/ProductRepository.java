@@ -47,4 +47,8 @@ public class ProductRepository {
     public void addProduct(Product product) {
         productList.add(product);
     }
+
+    public void deleteById(long id) {
+        productList.removeIf(p -> p.getId().equals(id));
+    }
 }

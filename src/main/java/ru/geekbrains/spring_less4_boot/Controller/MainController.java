@@ -87,5 +87,8 @@ public class MainController {
         service.changeCost(productId, delta);
     }
 
-
+    @GetMapping("/product/delete/{id}")
+    public void delete (@PathVariable long id) {
+        productRepository.deleteById(id);
+    }
 }
